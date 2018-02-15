@@ -1,0 +1,36 @@
+.atomic_number {
+    font-size: 0.75em;
+    padding: 0;
+    margin: 1px 0 0;
+    line-height: 1em;
+}
+
+.symbol {
+    font-size: 1.1em;
+    padding: 0;
+    line-height: 1.1em;
+    margin: 0;
+    font-weight: bold;
+    border-style: none;
+}
+
+.atomic_weight {
+    font-size: 0.6em;
+    padding: 0;
+    line-height: 1em;
+    margin: 2px 0 1px;
+}
+
+.element_name {
+    font-size: 0.7em;
+    padding: 0;
+    margin: 4px 0 0;
+    line-height: 1em;
+}
+
+.element_box{
+    border: 1px solid #336699;
+    padding: 0.1em 0.1em;
+    text-align: center;
+    width: 58.6px;
+}
