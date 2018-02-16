@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import '../../style/element.css';
+//import '../../style/element.css';
 
 class Element extends Component{
     constructor(props){
@@ -8,7 +8,9 @@ class Element extends Component{
     }
     render(){
         return(
-            <div className="Element">
+            <div 
+                className={'Element El' + this.props.atomic_number}
+            >
                 <div className="element_box">
                     <h6 className="atomic_number">{this.props.atomic_number}</h6>
                     <div className="symbol">{this.props.symbol}</div>
@@ -21,9 +23,9 @@ class Element extends Component{
 }
 
 Element.propTypes = {
-    atomic_number: PropTypes.string,
+    atomic_number: PropTypes.number,
     symbol: PropTypes.string,
-    atomic_weight: PropTypes.string,
+    atomic_weight: PropTypes.number,
     element_name: PropTypes.string
 }
 
