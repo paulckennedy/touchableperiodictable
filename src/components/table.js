@@ -77,6 +77,8 @@ class Table extends Component{
                 <div className="b1"></div>
                 <div className="b2"></div>
                 <div className="b3"></div>
+                <div className="b4"></div>
+                <div className="b5"></div>
                 {columnList}
                 {rowList}
                 {list}

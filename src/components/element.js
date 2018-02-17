@@ -14,8 +14,8 @@ class Element extends Component{
                 <div className={'element_box ' + this.props.category}>
                     <h6 className="atomic_number">{this.props.atomic_number}</h6>
                     <div className="symbol">{this.props.symbol}</div>
-                    <div className="atomic_weight">{this.props.atomic_weight}</div>
                     <div className="element_name">{this.props.element_name}</div>
+                    <div className="atomic_weight">{this.props.atomic_weight}</div>
                 </div>
             </div>
         )
