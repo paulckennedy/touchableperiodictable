@@ -9,9 +9,9 @@ class Element extends Component{
     render(){
         return(
             <div 
-                className={'Element El' + this.props.atomic_number}
+                className={'Element El' + this.props.atomic_number + ' ' + this.props.phase}
             >
-                <div className="element_box">
+                <div className={'element_box ' + this.props.category}>
                     <h6 className="atomic_number">{this.props.atomic_number}</h6>
                     <div className="symbol">{this.props.symbol}</div>
                     <div className="atomic_weight">{this.props.atomic_weight}</div>
@@ -23,6 +23,8 @@ class Element extends Component{
 }
 
 Element.propTypes = {
+    phase: PropTypes.string,
+    category: PropTypes.string,
     atomic_number: PropTypes.number,
     symbol: PropTypes.string,
     atomic_weight: PropTypes.number,
