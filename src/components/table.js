@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import Element from './element';
 import data from '../PeriodicTableJSON.json';
 import PropTypes from 'prop-types';
-//import '../../style/table.css';
+import Closeup from './closeup';
+import '../../style/table.css';
 
 class Table extends Component{
     printColumnLabel(i){
@@ -76,7 +77,7 @@ class Table extends Component{
                 <div className="b0"></div>
                 <div className="b1"></div>
                 <div className="b2"></div>
-                <div className="b3"></div>
+                <div className="b3"><Closeup /></div>
                 <div className="b4"></div>
                 <div className="b5"></div>
                 {columnList}

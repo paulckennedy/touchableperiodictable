@@ -9,9 +9,7 @@ describe('Table',()=>{
     });
 
     describe('dimensions', ()=>{
-        it('has 19 columns', ()=>{
 
-        });
     });
     
 

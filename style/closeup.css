@@ -1,0 +1,113 @@
+.Closeup{
+    display: grid;
+    grid-template-columns: 14fr 1fr 4fr;
+}
+.metals_group{
+    display: grid;
+    grid-auto-flow: row;
+}
+.nonmetals_group{
+    display: grid;
+    grid-auto-flow: row;
+}
+.metals_row_1 {
+    border-left: 3px solid black;
+    border-top: 3px solid black;
+    border-right: 3px solid black;
+    border-radius: 15px 0 0 0;
+    font-size: 1.36em;
+    justify-content: center
+}
+
+.nonmetals_row_1 {
+    border-left: 3px solid black;
+    border-top: 3px solid black;
+    border-right: 3px solid black;
+    border-radius: 0 15px 0 0;
+    font-size: 1.36em;
+    justify-content: center
+}
+
+.bottom_rows{
+    display:grid;
+    grid-template-rows: 1fr 1fr;
+    grid-auto-flow: row;
+}
+.metals_row_2{
+    display:grid;
+    grid-auto-flow: column;
+    grid-template-columns: 1fr 1fr 5fr 1f5 1fr;
+}
+.nonmetals_row_2{
+    display:grid;
+    grid-auto-flow: column;
+    grid-template-columns: 1fr 1fr;
+}
+.alkali_metals{
+    border: 1px solid black;
+    font-size: 0.8em;
+    background-color: rgb(255, 204, 51);
+    text-orientation: sideways;
+    writing-mode: vertical-lr;
+    justify-content: center
+}
+.alkaline_earth_metals{
+    border: 1px solid black;
+    font-size: 0.8em;
+    background-color: rgb(255, 255, 68);
+    vertical-align: text-top;
+    text-orientation: sideways;
+    writing-mode: vertical-lr;
+}
+.lanthanoids{
+    border: 1px solid black;
+    font-size: 0.8em;
+    background-color: rgb(255, 187, 153);
+}
+.actinoids{
+    border: 1px solid black;
+    font-size: 0.8em;
+    background-color: rgb(238, 187, 221);
+}
+.transition_metals{
+    border: 1px solid black;
+    font-size: 0.8em;
+    background-color: rgb(221, 187, 187);
+    vertical-align: text-top;
+    text-orientation: sideways;
+    writing-mode: vertical-lr;
+}
+.post-transition_metals{
+    border: 1px solid black;
+    font-size: 0.8em;
+    background-color: rgb(153, 221, 204);
+    vertical-align: text-top;
+    text-orientation: sideways;
+    writing-mode: vertical-lr;
+}
+.metaloids{
+    border: 1px solid black;
+    font-size: 0.8em;
+    background-color: rgb(119, 221, 136);
+    vertical-align: text-top;
+    text-orientation: sideways;
+    writing-mode: vertical-lr;
+    display: grid;
+    grid-template-columns: 1fr;
+}
+.other_nonmetals{
+    border: 1px solid black;
+    font-size: 0.8em;
+    background-color: rgb(34, 255, 34);
+    vertical-align: text-top;
+    text-orientation: sideways;
+    writing-mode: vertical-lr;
+}
+.nobel_gases{
+    border: 1px solid black;
+    font-size: 0.8em;
+    background-color: rgb(119, 204, 255);
+    vertical-align: text-top;
+    text-orientation: sideways;
+    writing-mode: vertical-lr;
+}
