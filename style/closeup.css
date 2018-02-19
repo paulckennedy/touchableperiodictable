@@ -6,6 +6,16 @@
     display: grid;
     grid-auto-flow: row;
 }
+.metaloids{
+    border: 1px solid black;
+    font-size: 0.8em;
+    background-color: rgb(119, 221, 136);
+    vertical-align: text-top;
+    text-orientation: sideways;
+    writing-mode: vertical-lr;
+    display: grid;
+    min-height: 1fr;
+}
 .nonmetals_group{
     display: grid;
     grid-auto-flow: row;
@@ -13,14 +23,12 @@
 .metals_row_1 {
     border-left: 3px solid black;
     border-top: 3px solid black;
-    border-right: 3px solid black;
     border-radius: 15px 0 0 0;
     font-size: 1.36em;
     justify-content: center
 }
 
 .nonmetals_row_1 {
-    border-left: 3px solid black;
     border-top: 3px solid black;
     border-right: 3px solid black;
     border-radius: 0 15px 0 0;
@@ -84,16 +92,6 @@
     vertical-align: text-top;
     text-orientation: sideways;
     writing-mode: vertical-lr;
-}
-.metaloids{
-    border: 1px solid black;
-    font-size: 0.8em;
-    background-color: rgb(119, 221, 136);
-    vertical-align: text-top;
-    text-orientation: sideways;
-    writing-mode: vertical-lr;
-    display: grid;
-    grid-template-columns: 1fr;
 }
 .other_nonmetals{
     border: 1px solid black;

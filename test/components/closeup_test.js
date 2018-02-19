@@ -41,7 +41,7 @@ describe('Closeup',()=>{
     });
     describe('Non-Metals',()=>{
         it('has a div for Other Non-Metals.',()=>{
-            expect(component.find('div.other_non-metals')).to.exist;
+            expect(component.find('div.other_nonmetals')).to.exist;
         });
         it('has a div for Nobel Gases.',()=>{
             expect(component.find('div.nobel_gases')).to.exist;
