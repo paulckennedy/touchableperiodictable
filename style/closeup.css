@@ -1,10 +1,13 @@
 .Closeup{
     display: grid;
     grid-template-columns: 14fr 1fr 4fr;
+    
 }
 .metals_group{
     display: grid;
     grid-auto-flow: row;
+    text-align: center;
+    
 }
 .metaloids{
     border: 1px solid black;
@@ -15,10 +18,12 @@
     writing-mode: vertical-lr;
     display: grid;
     min-height: 1fr;
+    text-align: center;
 }
 .nonmetals_group{
     display: grid;
     grid-auto-flow: row;
+    text-align: center;
 }
 .metals_row_1 {
     border-left: 3px solid black;
@@ -71,6 +76,7 @@
     border: 1px solid black;
     font-size: 0.8em;
     background-color: rgb(255, 187, 153);
+    line-height: 1fr;
 }
 .actinoids{
     border: 1px solid black;

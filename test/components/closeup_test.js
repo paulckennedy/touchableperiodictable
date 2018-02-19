@@ -12,16 +12,19 @@ describe('Closeup',()=>{
     describe('Metals',()=>{
         it('has a div for Metals.',()=>{
             expect(component.find('div.metals')).to.exist;
-            it('onmouseover, colors Metals and grays out everything else.', () => {
-                component.find('div.metals').simulate('onmouseover');
-                expect(component.find('textarea')).to.have.value('');
-              });
+            
         });
         it('has a div for Non-Metals.',()=>{
             expect(component.find('div.nonmetals')).to.exist;
         });
         it('has a div for Alkaline Earth Metals.',()=>{
             expect(component.find('div.alkaline_earth_metals')).to.exist;
+            describe('hover',()=>{
+                it('onmouseover, colors Alkaline Earth Metals and grays out everything else.', () => {
+                    component.find('div.alkaline_earth_metals').simulate('mouseEnter');
+                    expect(component.find('div.transition_metals')).to.have.style('color', 'gray');
+                });
+            });   
         });
         it('has a div for Lanthanoids.',()=>{
             expect(component.find('div.lanthanoids')).to.exist;
