@@ -6,6 +6,15 @@ import Closeup from './closeup';
 import '../../style/table.css';
 
 class Table extends Component{
+    constructor(props){
+        super(props);
+
+        this.state = {
+            hoveredElement: {}
+        };
+
+        this.elementLookup = this.elementLookup.bind(this);
+    }
     printColumnLabel(i){
         var columnname = 'c' + i;
         return(<div className={columnname}>{i}</div>) ;
@@ -15,6 +24,15 @@ class Table extends Component{
         var columnname = 'r' + i;
         return(<div className={columnname}>{i}</div>) ;
     };
+
+    elementLookup(term){
+        for(var i=0; i < data.elements.length; i++){
+            if(data.elements[i].symbol === term){
+                this.setState({hoveredElement : data.elements[i]});
+                console.log(this.hoveredElement);
+            }
+        }
+    }
 
     printSingleElement(element){
         if(element.category != 'lanthanide' && element.category != 'actinide'){
@@ -27,6 +45,7 @@ class Table extends Component{
                     atomic_weight={(element.atomic_mass).toFixed(4)} 
                     element_name={element.name}
                     key={element.number}
+                    onHoverElementChange = {term => this.elementLookup(term)}
                   />
             );
         }
@@ -43,6 +62,7 @@ class Table extends Component{
                     atomic_weight={(element.atomic_mass).toFixed(4)} 
                     element_name={element.name}
                     key={element.number}
+                    onHoverElementChange = {term => this.elementLookup(term)}
                   />
             );
         }
@@ -59,6 +79,7 @@ class Table extends Component{
                     atomic_weight={(element.atomic_mass).toFixed(4)} 
                     element_name={element.name}
                     key={element.number}
+                    onHoverElementChange = {term => this.elementLookup(term)}
                   />
             );
         }
