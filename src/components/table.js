@@ -4,6 +4,8 @@ import CloseupElement from './closeup_element';
 import data from '../PeriodicTableJSON.json';
 import PropTypes from 'prop-types';
 import Closeup from './closeup';
+import Modal from './Modal';
+
 import '../../style/table.css';
 
 class Table extends Component{
@@ -11,11 +13,29 @@ class Table extends Component{
         super(props);
 
         this.state = {
-            hoveredElement: {}
+            hoveredElement: {},
+            isOpen: false
         };
 
         this.elementLookup = this.elementLookup.bind(this);
+        this.toggleModal = this.toggleModal.bind(this);
+   }
+    
+    toggleModal = () => {
+        this.setState({
+        isOpen: !this.state.isOpen
+        });
+        console.log(this.state.isOpen);
     }
+
+    showWikiBox = (link) => {
+    this.setState({
+        isOpen: !this.state.isOpen,
+        link: link
+    });
+    console.log(this.state.link);
+    }
+
     printColumnLabel(i){
         var columnname = 'c' + i;
         return(<div className={columnname}>{i}</div>) ;
@@ -38,16 +58,7 @@ class Table extends Component{
     printSingleElement(element){
         if(element.category != 'lanthanide' && element.category != 'actinide'){
             return(  
-                <Element
-                    phase={element.phase}
-                    category={element.category}                    
-                    atomic_number={element.number} 
-                    symbol={element.symbol} 
-                    atomic_weight={(element.atomic_mass).toFixed(4)} 
-                    element_name={element.name}
-                    key={element.number}
-                    onHoverElementChange = {term => this.elementLookup(term)}
-                  />
+                this.printElement(element)
             );
         }
       }
@@ -55,16 +66,7 @@ class Table extends Component{
       printLanthanideSingleElement(element){
         if(element.category === 'lanthanide'){
             return(  
-                <Element
-                    phase={element.phase}
-                    category={element.category}                    
-                    atomic_number={element.number} 
-                    symbol={element.symbol} 
-                    atomic_weight={(element.atomic_mass).toFixed(4)} 
-                    element_name={element.name}
-                    key={element.number}
-                    onHoverElementChange = {term => this.elementLookup(term)}
-                  />
+                this.printElement(element)
             );
         }
       }
@@ -72,18 +74,25 @@ class Table extends Component{
       printActinideSingleElement(element){
         if(element.category === 'actinide'){
             return(  
-                <Element
-                    phase={element.phase}
-                    category={element.category}                    
-                    atomic_number={element.number} 
-                    symbol={element.symbol} 
-                    atomic_weight={(element.atomic_mass).toFixed(4)} 
-                    element_name={element.name}
-                    key={element.number}
-                    onHoverElementChange = {term => this.elementLookup(term)}
-                  />
+                this.printElement(element)
             );
         }
+      }
+
+      printElement(element){
+        return(  
+            <Element
+                phase={element.phase}
+                category={element.category}                    
+                atomic_number={element.number} 
+                symbol={element.symbol} 
+                atomic_weight={(element.atomic_mass)} 
+                element_name={element.name}
+                key={element.number}
+                onHoverElementChange = {term => this.elementLookup(term)}
+                //onClick = {term => this.props.showWikiBox(term)}
+                />
+        );
       }
 
       printHoveredElement(element){
@@ -111,21 +120,27 @@ class Table extends Component{
         const rowList = rows.map(index => this.printRowLabel(index));
         const list = data.elements.map(element => this.printSingleElement(element));
         const hoveredElement = this.printHoveredElement(this.state.hoveredElement);
-        return (  
-            <div className="Table">
-                <div className="b0"></div>
-                <div className="b1"></div>
-                <div className="b2">
-                    {hoveredElement}
-                </div>
-                <div className="b3"><Closeup /></div>
-                <div className="b4"></div>
-                <div className="b5"></div>
-                {columnList}
-                {rowList}
-                {list}
-                {Lanthanides}
-                {Actinides}
+        return ( 
+            <div>
+                <Modal show={this.state.isOpen}
+                    onClose={this.toggleModal}>
+                    {this.state.link}
+                </Modal>
+                <div className="Table">
+                    <div className="b0"></div>
+                    <div className="b1"></div>
+                    <div className="b2">
+                        {hoveredElement}
+                    </div>
+                    <div className="b3"><Closeup /></div>
+                    <div className="b4"></div>
+                    <div className="b5"></div>
+                    {columnList}
+                    {rowList}
+                    {list}
+                    {Lanthanides}
+                    {Actinides}
+                </div>        
             </div>
         )
       }

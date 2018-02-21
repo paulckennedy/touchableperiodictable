@@ -1,0 +1,20 @@
+.WikiBox.Expanded {
+
+    top: 15%;
+    left: 15%;
+    width: 70%;
+    height: 70%;
+    border: thick solid rgb(136, 136, 255);
+    display: block;
+    background-color: white;
+
+}
+.WikiBox {
+
+    position: fixed;
+    z-index: 101;
+    cursor: progress;
+    border-radius: 1.5ex;
+    display: none;
+
+}
