@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Element from './element';
+import CloseupElement from './closeup_element';
 import data from '../PeriodicTableJSON.json';
 import PropTypes from 'prop-types';
 import Closeup from './closeup';
@@ -29,7 +30,7 @@ class Table extends Component{
         for(var i=0; i < data.elements.length; i++){
             if(data.elements[i].symbol === term){
                 this.setState({hoveredElement : data.elements[i]});
-                console.log(this.hoveredElement);
+                //console.log(data.elements[i]);
             }
         }
     }
@@ -84,6 +85,22 @@ class Table extends Component{
             );
         }
       }
+
+      printHoveredElement(element){
+        return(  
+            <CloseupElement
+                phase={element.phase}
+                category={element.category}                    
+                atomic_number={element.number} 
+                symbol={element.symbol} 
+                atomic_weight={(element.atomic_mass)} 
+                element_name={element.name}
+                key={element.number}
+                />
+        );
+      }
+    
+      
     
      render() {
         var columns = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18];
@@ -93,11 +110,14 @@ class Table extends Component{
         const columnList = columns.map(index => this.printColumnLabel(index));
         const rowList = rows.map(index => this.printRowLabel(index));
         const list = data.elements.map(element => this.printSingleElement(element));
+        const hoveredElement = this.printHoveredElement(this.state.hoveredElement);
         return (  
             <div className="Table">
                 <div className="b0"></div>
                 <div className="b1"></div>
-                <div className="b2"></div>
+                <div className="b2">
+                    {hoveredElement}
+                </div>
                 <div className="b3"><Closeup /></div>
                 <div className="b4"></div>
                 <div className="b5"></div>
