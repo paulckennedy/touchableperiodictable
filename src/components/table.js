@@ -4,9 +4,20 @@ import CloseupElement from './closeup_element';
 import data from '../PeriodicTableJSON.json';
 import PropTypes from 'prop-types';
 import Closeup from './closeup';
-import Modal from './Modal';
+import Modal from 'react-modal';
 
 import '../../style/table.css';
+
+const customStyles = {
+    content : {
+      top                   : '50%',
+      left                  : '50%',
+      right                 : 'auto',
+      bottom                : 'auto',
+      marginRight           : '-50%',
+      transform             : 'translate(-50%, -50%)'
+    }
+  };
 
 class Table extends Component{
     constructor(props){
@@ -14,28 +25,31 @@ class Table extends Component{
 
         this.state = {
             hoveredElement: {},
-            isOpen: false
+            modalIsOpen: false
         };
 
         this.elementLookup = this.elementLookup.bind(this);
-        this.toggleModal = this.toggleModal.bind(this);
-   }
+        this.openModal = this.openModal.bind(this);
+        this.afterOpenModal = this.afterOpenModal.bind(this);
+        this.closeModal = this.closeModal.bind(this);
+    }
+
+   
+    openModal() {
+        this.setState({modalIsOpen: true});
+        console.log(this.state.hoveredElement.source);
+      }
     
-    toggleModal = () => {
-        this.setState({
-        isOpen: !this.state.isOpen
-        });
-        console.log(this.state.isOpen);
-    }
-
-    showWikiBox = (link) => {
-    this.setState({
-        isOpen: !this.state.isOpen,
-        link: link
-    });
-    console.log(this.state.link);
-    }
-
+      afterOpenModal() {
+        // references are now sync'd and can be accessed.
+        this.subtitle.style.color = '#f00';
+      }
+    
+      closeModal() {
+        this.setState({modalIsOpen: false});
+      }
+    
+    
     printColumnLabel(i){
         var columnname = 'c' + i;
         return(<div className={columnname}>{i}</div>) ;
@@ -90,7 +104,7 @@ class Table extends Component{
                 element_name={element.name}
                 key={element.number}
                 onHoverElementChange = {term => this.elementLookup(term)}
-                //onClick = {term => this.props.showWikiBox(term)}
+                onClick = {this.openModal}
                 />
         );
       }
@@ -122,10 +136,21 @@ class Table extends Component{
         const hoveredElement = this.printHoveredElement(this.state.hoveredElement);
         return ( 
             <div>
-                <Modal show={this.state.isOpen}
-                    onClose={this.toggleModal}>
-                    {this.state.link}
-                </Modal>
+                <Modal
+                    isOpen={this.state.modalIsOpen}
+                    onAfterOpen={this.afterOpenModal}
+                    onRequestClose={this.closeModal}
+                    style={customStyles}
+                    contentLabel={this.state.hoveredElement.name}
+                    >
+                    <button onClick={this.closeModal}>X</button>
+                    <iframe 
+                        src={this.state.hoveredElement.source} 
+                        title={this.state.hoveredElement.name} 
+                        width="1000" 
+                        height="500"></iframe>
+                    
+                  </Modal>
                 <div className="Table">
                     <div className="b0"></div>
                     <div className="b1"></div>

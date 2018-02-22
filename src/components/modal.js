@@ -8,7 +8,6 @@ class Modal extends React.Component {
       return null;
     }
 
-    // The gray background
     const backdropStyle = {
       position: 'fixed',
       top: 0,
@@ -30,8 +29,8 @@ class Modal extends React.Component {
     };
 
     return (
-      <div className="backdrop" >
-        <div className="modal" >
+      <div className="backdrop" style={this.backdropStyle}>
+        <div className="modal" style={this.modalStyle}>
           {this.props.children}
 
           <div className="footer">

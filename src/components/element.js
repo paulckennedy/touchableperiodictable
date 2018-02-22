@@ -26,8 +26,10 @@ class Element extends Component{
                     + this.props.atomic_number 
                     + ' ' + this.props.phase }
                 onMouseEnter={this.onMouseEnter}
+                onClick = {this.props.onClick}
             >
-                <div className={'element_box ' + this.state.category}>
+                <div className={'element_box ' + this.state.category}
+                    >
                     <h6 className="atomic_number">{this.state.atomic_number}</h6>
                     <div className="symbol">{this.state.symbol}</div>
                     <div className="element_name">{this.state.element_name}</div>
@@ -48,16 +50,3 @@ Element.propTypes = {
 }
 
 export default Element;
-/*
-function mapStateToProps(state){
-    return({
-        atomic_number: state.atomic_number,
-        symbol: state.symbol,
-        element_name: state.element_name,
-        atomic_weight: state.atomic_weight,
-        category: state.category
-    });
-}
-
-export default connect(mapStateToProps)(Element);
-*/
