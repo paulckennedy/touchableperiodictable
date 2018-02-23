@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Element from './element';
 import CloseupElement from './closeup_element';
+import Orbitals from './orbitals';
 import data from '../PeriodicTableJSON.json';
 import PropTypes from 'prop-types';
 import Closeup from './closeup';
@@ -51,12 +52,12 @@ class Table extends Component{
     
     
     printColumnLabel(i){
-        var columnname = 'c' + i;
+        var columnname = 'c' + i + ' GroupAndColumn';
         return(<div className={columnname}>{i}</div>) ;
     };
 
     printRowLabel(i){
-        var columnname = 'r' + i;
+        var columnname = 'r' + i + ' GroupAndColumn';
         return(<div className={columnname}>{i}</div>) ;
     };
 
@@ -122,6 +123,13 @@ class Table extends Component{
                 />
         );
       }
+      printHoveredOrbitals(element){
+        return(  
+            <Orbitals
+                atomic_number={element.number} 
+                />
+        );
+      }
     
       
     
@@ -134,6 +142,7 @@ class Table extends Component{
         const rowList = rows.map(index => this.printRowLabel(index));
         const list = data.elements.map(element => this.printSingleElement(element));
         const hoveredElement = this.printHoveredElement(this.state.hoveredElement);
+        const hoveredOrbitals = this.printHoveredOrbitals(this.state.hoveredElement);
         return ( 
             <div>
                 <Modal
@@ -157,7 +166,7 @@ class Table extends Component{
                     <div className="b2">
                         {hoveredElement}
                     </div>
-                    <div className="b3"><Closeup /></div>
+                    <div className="b3">{hoveredOrbitals}</div>
                     <div className="b4"></div>
                     <div className="b5"></div>
                     {columnList}
